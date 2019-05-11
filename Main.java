@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
@@ -25,7 +24,6 @@ public class Main extends Application implements EventHandler<ActionEvent>{
     private static TextField imageY;
     private static Stage secondStage;
     private static Button button;
-    private static Image image;
     private static ImageView imageView;
     private static Group root;
     private static Group root2;
