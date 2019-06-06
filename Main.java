@@ -72,13 +72,7 @@ public class Main extends Application implements EventHandler<ActionEvent>{
         //This connects everything together
         root2 = new Group();
 
-        //Creates a grid to scale
-        for (int i = 0; i < WIDTH; i = i + SCALE){
-            root2.getChildren().add(new Line(i, 0, i, HEIGHT));
-        }
-        for (int i = 0; i < HEIGHT; i = i + SCALE){
-            root2.getChildren().add(new Line(0, i, WIDTH, i));
-        }
+
 
         //Makes the second window with a green background (for contrast)
         Scene scene2 = new Scene(root2, WIDTH, HEIGHT);
@@ -93,23 +87,33 @@ public class Main extends Application implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event) {
         //enter button
         if(event.getSource() == button){
+            root2.getChildren().clear();
+            //Creates a grid to scale
+            for (int i = 0; i < WIDTH; i = i + SCALE){
+                root2.getChildren().add(new Line(i, 0, i, HEIGHT));
+            }
+            for (int i = 0; i < HEIGHT; i = i + SCALE){
+                root2.getChildren().add(new Line(0, i, WIDTH, i));
+            }
 
             Integrate mazeMaker = new Integrate();
             String[] maze = mazeMaker.fill();
+            System.out.println();
             System.out.println(maze.length);
 
             for(int i = 0; i < maze.length; i ++){
                 String bleh = maze[i];
-
-                imageView = new ImageView(bleh + "a.png");
-                imageView.setX(i % 40 * SCALE);
-                int y = i / 40;
-                System.out.println(i);
-                System.out.println(y);
-                imageView.setY(y * SCALE);
-                imageView.setFitHeight(SCALE);
-                imageView.setFitWidth(SCALE);
-                root2.getChildren().add(imageView);
+                if(maze[i] != null){
+                    imageView = new ImageView(bleh + "a.png");
+                    imageView.setX(i % 40 * SCALE);
+                    int y = i / 40;
+                    System.out.println(i);
+                    System.out.println(y);
+                    imageView.setY(y * SCALE);
+                    imageView.setFitHeight(SCALE);
+                    imageView.setFitWidth(SCALE);
+                    root2.getChildren().add(imageView);
+                }
             }
 
 
